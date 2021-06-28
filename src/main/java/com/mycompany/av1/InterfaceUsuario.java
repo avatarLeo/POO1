@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.mycompany.av1;
+import com.mycompany.av1.janelas.Inicio;
+import com.mycompany.av1.janelas.TelaInicial;
 import java.util.Scanner;
 import java.io.IOException;
 /**
@@ -26,7 +28,8 @@ public class InterfaceUsuario {
         System.out.println("|====================================================|");
         System.out.println("| Escolha uma opção ou [0] para sair                 |");
         System.out.println("|====================================================|");
-        new Inicio().setVisible(true);
+        TelaInicial janelaInicial = new TelaInicial();
+        janelaInicial.abrir();
         //new Editar().setVisible(true);
     }
     
