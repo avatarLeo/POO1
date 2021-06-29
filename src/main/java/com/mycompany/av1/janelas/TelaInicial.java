@@ -5,6 +5,8 @@
  */
 package com.mycompany.av1.janelas;
 
+import com.mycompany.av1.Arquivo;
+import com.mycompany.av1.Cliente;
 import com.mycompany.av1.OperacaoBancaria;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -78,6 +80,11 @@ public class TelaInicial extends javax.swing.JFrame {
         btn_cadastrar.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         btn_cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon("/home/leo/NetBeansProjects/av1/img/user-azul-forte.png")); // NOI18N
 
@@ -188,7 +195,10 @@ public class TelaInicial extends javax.swing.JFrame {
             //jTextField.setBorder(new LineBorder(Color.LIGHT_GRAY)); pra voltar ao normal
         } else{
             if(cliente.validaCliente(nome, senha)){
-                new Inicio().setVisible(true);
+                Arquivo dado = new Arquivo();
+                Cliente c = dado.encontrarArquivo(nome);
+                Inicio j1 = new Inicio(c);
+                j1.setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos.");
@@ -199,6 +209,11 @@ public class TelaInicial extends javax.swing.JFrame {
         //new Login().setVisible(true);
         //this.dispose(); //Fechar a atual janela
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
+
+        abrir();
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,10 +263,12 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JPasswordField pasw_senha;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
-    public boolean abrir(){
-        new TelaInicial().setVisible(true);
-        return estado;
+    public void abrir(){
+          
+        txt_nome.setText("Maria");
+    
     }
+    
 }
 
 

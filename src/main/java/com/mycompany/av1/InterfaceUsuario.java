@@ -28,10 +28,9 @@ public class InterfaceUsuario {
         System.out.println("|====================================================|");
         System.out.println("| Escolha uma opção ou [0] para sair                 |");
         System.out.println("|====================================================|");
-        TelaInicial janelaInicial = new TelaInicial();
-        if(janelaInicial.abrir()){
-            new Inicio().setVisible(true);
-        }
+        
+        new TelaInicial().setVisible(true);
+        
         //new Editar().setVisible(true);
     }
     
