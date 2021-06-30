@@ -34,6 +34,7 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,6 +46,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pasw_senha = new javax.swing.JPasswordField();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seja Bem Vindo");
@@ -69,6 +72,11 @@ public class TelaInicial extends javax.swing.JFrame {
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
+            }
+        });
+        btn_login.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_loginKeyPressed(evt);
             }
         });
 
@@ -211,9 +219,12 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-
-        abrir();
+        new CadastrarEditar().setVisible(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
+
+    private void btn_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_loginKeyPressed
+
+    }//GEN-LAST:event_btn_loginKeyPressed
 
     /**
      * @param args the command line arguments
@@ -260,14 +271,11 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField pasw_senha;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
-    public void abrir(){
-          
-        txt_nome.setText("Maria");
-    
-    }
+  
     
 }
 

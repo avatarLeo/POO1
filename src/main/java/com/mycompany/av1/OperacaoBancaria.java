@@ -91,8 +91,8 @@ public class OperacaoBancaria {
             return false;
     }
     
-    public boolean transferencia(Cliente c1, Cliente c2, String no, int conta, double valor){
-        if((no.equals(c2.getNome()) && (conta == c2.getConta()))){
+    public boolean transferencia(Cliente c1, Cliente c2, String no2, int conta, double valor){
+        if((no2.equals(c2.getNome()) && (conta == c2.getConta()))){
             if((saque(valor, c1, (byte)2))){
                 return deposito(valor, c2, (byte)2);
             }return false;
