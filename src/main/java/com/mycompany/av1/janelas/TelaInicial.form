@@ -60,9 +60,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="btn_cadastrar" max="32767" attributes="0"/>
-                                  <Component id="btn_login" max="32767" attributes="0"/>
                                   <Component id="txt_nome" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pasw_senha" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                                  <Component id="pasw_senha" alignment="0" pref="173" max="32767" attributes="0"/>
+                                  <Component id="btn_login" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
