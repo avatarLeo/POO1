@@ -36,7 +36,7 @@ public class InterfaceUsuario {
     
     public void cadastrar(){
         String nome;
-        long cpf;
+        String cpf;
         String endereco;
         String nascimento;
         double salario;    
@@ -52,7 +52,7 @@ public class InterfaceUsuario {
         nome = ler.nextLine();
         
         System.out.println("CPF: ");
-        cpf = ler.nextLong();
+        cpf = ler.nextLine();
         
         System.out.println("Endereço: ");
         ler.nextLine();

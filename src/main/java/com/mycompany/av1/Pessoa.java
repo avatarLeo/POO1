@@ -11,11 +11,11 @@ package com.mycompany.av1;
  */
 public class Pessoa {
     private String nome;
-    private long cpf;
+    private String cpf;
     private String endereco;
     private String nascimento;
 
-    public Pessoa(String nome, long cpf, String endereco, String nascimento) {
+    public Pessoa(String nome, String cpf, String endereco, String nascimento) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -26,7 +26,7 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -42,7 +42,7 @@ public class Pessoa {
         return nome;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 

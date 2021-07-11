@@ -6,6 +6,7 @@
 package com.mycompany.av1.janelas;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -38,19 +39,19 @@ public class CadastrarEditar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_nome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        txt_data = new javax.swing.JFormattedTextField();
+        txt_cpf = new javax.swing.JFormattedTextField();
+        txt_salario = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txt_endereco = new javax.swing.JTextField();
+        btn_salvar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txt_senha = new javax.swing.JTextField();
+        txt_confirmar_senha = new javax.swing.JTextField();
 
         jTextField2.setText("jTextField2");
 
@@ -80,11 +81,11 @@ public class CadastrarEditar extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(14, 54, 90));
         jLabel3.setText("CPF");
 
-        jTextField1.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 100, 7));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_nome.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_nome.setForeground(new java.awt.Color(0, 100, 7));
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_nomeActionPerformed(evt);
             }
         });
 
@@ -92,59 +93,64 @@ public class CadastrarEditar extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(14, 54, 90));
         jLabel4.setText("Salário");
 
-        jFormattedTextField1.setForeground(new java.awt.Color(0, 100, 7));
+        txt_data.setForeground(new java.awt.Color(0, 100, 7));
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_data.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_data.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                txt_dataActionPerformed(evt);
             }
         });
 
-        jFormattedTextField2.setForeground(new java.awt.Color(0, 100, 7));
+        txt_cpf.setForeground(new java.awt.Color(0, 100, 7));
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txt_cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField2.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txt_cpf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                txt_cpfActionPerformed(evt);
             }
         });
 
-        jFormattedTextField3.setForeground(new java.awt.Color(0, 100, 7));
+        txt_salario.setForeground(new java.awt.Color(0, 100, 7));
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ ##,###.##")));
+            txt_salario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ ##,###.##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField3.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_salario.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(14, 54, 90));
         jLabel5.setText("Endereço");
 
-        jTextField4.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 100, 7));
+        txt_endereco.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_endereco.setForeground(new java.awt.Color(0, 100, 7));
 
-        jButton1.setBackground(new java.awt.Color(8, 14, 98));
-        jButton1.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Salvar");
-
-        jButton2.setBackground(new java.awt.Color(0, 90, 50));
-        jButton2.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_salvar.setBackground(new java.awt.Color(8, 14, 98));
+        btn_salvar.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        btn_salvar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_salvarActionPerformed(evt);
+            }
+        });
+
+        btn_cancelar.setBackground(new java.awt.Color(0, 90, 50));
+        btn_cancelar.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
             }
         });
 
@@ -156,11 +162,11 @@ public class CadastrarEditar extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(14, 54, 90));
         jLabel7.setText("Confirmação da senha");
 
-        jTextField5.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 100, 7));
+        txt_senha.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_senha.setForeground(new java.awt.Color(0, 100, 7));
 
-        jTextField6.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 100, 7));
+        txt_confirmar_senha.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        txt_confirmar_senha.setForeground(new java.awt.Color(0, 100, 7));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,19 +188,19 @@ public class CadastrarEditar extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_confirmar_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(77, 77, 77)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_endereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(txt_salario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                        .addComponent(txt_cpf, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_data, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -202,60 +208,96 @@ public class CadastrarEditar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1)
+                    .addComponent(txt_data)
                     .addComponent(jLabel2))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_salario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_confirmar_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+    }//GEN-LAST:event_txt_cpfActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_nomeActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void txt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_txt_dataActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        String senha;
+        double salario;
+        String nome;
+        String endereco;
+        String data;
+        String cpf;
+        String senha2;
+        
+        senha = txt_senha.getText();
+        senha2 = txt_confirmar_senha.getText();
+        //salario = Double.parseDouble(txt_salario.getText());
+        nome = txt_nome.getText();
+        endereco = txt_endereco.getText();
+        data = txt_data.getText();
+        cpf = txt_cpf.getText();
+        
+        
+        
+        if(senha.equals(senha2)){
+            
+            
+            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || data.isBlank() || cpf.isBlank()){
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+            } else {
+                JOptionPane.showMessageDialog(this, txt_cpf.getText());
+            }
+        }else
+            JOptionPane.showMessageDialog(this, "senha não confere com a comfirmação da senha");
+        
+        
+        
+       
+   
+    }//GEN-LAST:event_btn_salvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,11 +335,8 @@ public class CadastrarEditar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_salvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -307,13 +346,29 @@ public class CadastrarEditar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txt_confirmar_senha;
+    private javax.swing.JFormattedTextField txt_cpf;
+    private javax.swing.JFormattedTextField txt_data;
+    private javax.swing.JTextField txt_endereco;
+    private javax.swing.JTextField txt_nome;
+    private javax.swing.JFormattedTextField txt_salario;
+    private javax.swing.JTextField txt_senha;
     private javax.swing.JTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void limparTela(){
+        txt_senha.setText("");
+        txt_salario.setText("");
+        txt_nome.setText("");
+        txt_endereco.setText("");
+        txt_data.setText("");
+        txt_cpf.setText("");
+        txt_confirmar_senha.setText("");
+    }
+
 }
+
+

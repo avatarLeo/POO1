@@ -185,7 +185,7 @@ public class Arquivo {
         }
         if(existe){
             String nom = dados[0];
-            long cpf = Long.parseLong(dados[1]);
+            String cpf = dados[1];
             String endereco = dados[2];
             String nascimento = dados[3];
             double salario = Double.parseDouble(dados[4]);
