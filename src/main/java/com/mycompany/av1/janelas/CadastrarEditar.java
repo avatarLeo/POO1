@@ -5,8 +5,14 @@
  */
 package com.mycompany.av1.janelas;
 
+import com.mycompany.av1.Arquivo;
+import com.mycompany.av1.Gambiarra;
+import com.mycompany.av1.Cliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -264,31 +270,42 @@ public class CadastrarEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_dataActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        
         String senha;
-        double salario;
+        double salario = 0;
         String nome;
         String endereco;
-        String data;
+        String dataNa;
         String cpf;
         String senha2;
         
+        try {
+            salario = converteSalario();
+        } catch (BadLocationException ex) {
+            Logger.getLogger(CadastrarEditar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String da = "12/54/55";
         senha = txt_senha.getText();
         senha2 = txt_confirmar_senha.getText();
-        //salario = Double.parseDouble(txt_salario.getText());
         nome = txt_nome.getText();
         endereco = txt_endereco.getText();
-        data = txt_data.getText();
+        dataNa = txt_data.getText();
         cpf = txt_cpf.getText();
-        
         
         
         if(senha.equals(senha2)){
             
+           
             
-            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || data.isBlank() || cpf.isBlank()){
+            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || dataNa.isBlank() || cpf.isBlank()){
                 JOptionPane.showMessageDialog(this, "Preencha todos os campos");
             } else {
-                JOptionPane.showMessageDialog(this, txt_cpf.getText());
+                Arquivo a = new Arquivo();
+                Gambiarra gamb = new Gambiarra();
+                Cliente c = gamb.iniciaCliente(nome, cpf, endereco, dataNa, salario, senha, a.arquivoDeControle());
+                a.salvar(c);
+                JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso!");
+                limparTela();
             }
         }else
             JOptionPane.showMessageDialog(this, "senha não confere com a comfirmação da senha");
@@ -367,6 +384,22 @@ public class CadastrarEditar extends javax.swing.JFrame {
         txt_data.setText("");
         txt_cpf.setText("");
         txt_confirmar_senha.setText("");
+    }
+    
+    private double converteSalario() throws BadLocationException{
+        double salario = 0;
+        String cont1, cont2;
+        String sSalario = txt_salario.getText(3, 10).trim();
+        
+        cont1 = sSalario.substring(0, 2);
+        cont2 = sSalario.substring(3);
+        
+        sSalario = cont1 + cont2;
+        
+        salario = Double.parseDouble(sSalario);
+        JOptionPane.showMessageDialog(this, cont1 + cont2);
+        
+        return salario;
     }
 
 }
