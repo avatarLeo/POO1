@@ -16,7 +16,7 @@ public class Cliente extends Pessoa{
     private String senha;
 
     
-    Cliente(String n, String cpf, String end, String nasc,
+    public Cliente(String n, String cpf, String end, String nasc,
             double sa, String sen, int con){
         
         super(n, cpf, end, nasc);

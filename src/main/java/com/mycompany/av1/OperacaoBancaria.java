@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.av1;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
@@ -21,9 +22,9 @@ public class OperacaoBancaria {
     
     public boolean deposito(double valor, Cliente c, byte in){
         Date data = new Date();
-        SimpleDateFormat da = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
+        DateFormat da = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         Arquivo salvar = new Arquivo();
-        registro = da.format(data);
+        registro = da.format(data.getTime());
         boolean res;
         
         if(valor > 0){

@@ -8,12 +8,13 @@ package com.mycompany.av1.janelas;
 import com.mycompany.av1.Arquivo;
 import com.mycompany.av1.Gambiarra;
 import com.mycompany.av1.Cliente;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.MaskFormatter;
+
 
 /**
  *
@@ -24,8 +25,24 @@ public class CadastrarEditar extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarEditar
      */
+    private Cliente c1;
     public CadastrarEditar() {
         initComponents();
+
+    }
+    
+    public CadastrarEditar(Cliente c){
+        initComponents();
+        c1 = c;
+        txt_data.setText(formataData());
+        txt_nome.setText(c1.getNome());
+        txt_cpf.setText(formataCpf(c1.getCpf()));
+        String sal = formataSalario(c1.getSalario());
+        txt_salario.setText(sal);
+        txt_endereco.setText(c1.getEndereco());
+        txt_senha.setText(c1.getSenha());
+        txt_confirmar_senha.setText(c1.getSenha());
+       
     }
 
     /**
@@ -254,7 +271,9 @@ public class CadastrarEditar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        
         this.dispose();
+        
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
@@ -284,7 +303,7 @@ public class CadastrarEditar extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             Logger.getLogger(CadastrarEditar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String da = "12/54/55";
+
         senha = txt_senha.getText();
         senha2 = txt_confirmar_senha.getText();
         nome = txt_nome.getText();
@@ -397,9 +416,43 @@ public class CadastrarEditar extends javax.swing.JFrame {
         sSalario = cont1 + cont2;
         
         salario = Double.parseDouble(sSalario);
-        JOptionPane.showMessageDialog(this, cont1 + cont2);
         
         return salario;
+    }
+    
+    private String formataData(){
+        char[] data = new char[10];
+        data = c1.getNascimento().toCharArray();
+        String novaDta = "";
+        
+        for(int i = 0; i < 10; i++){
+            char l = data[i];
+            if(l != '/'){
+                novaDta += data[i];
+            }
+        }
+        
+        return novaDta.trim();
+    }
+    
+    private String formataCpf(String cpf){
+        char[] arrayCpf = cpf.toCharArray();
+        String novoCpf = "";
+        
+        for(int i = 0; i < arrayCpf.length; i++){
+            char c = arrayCpf[i];
+            if(c != '.' || c != '-')
+                novoCpf += arrayCpf[i];
+        }
+        
+    return novoCpf.trim();
+    }
+    
+    private String formataSalario(double sa){
+        String sal = Double.toString(sa);
+        if(sal.length() < 7)
+            sal = "0" + sal;
+        return sal;
     }
 
 }

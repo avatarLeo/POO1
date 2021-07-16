@@ -5,17 +5,29 @@
  */
 package com.mycompany.av1.janelas;
 
+import com.mycompany.av1.Cliente;
+import com.mycompany.av1.OperacaoBancaria;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author leo
  */
 public class Sacar extends javax.swing.JFrame {
 
+    private Cliente c;
+
     /**
      * Creates new form Sacar
      */
-    public Sacar() {
+    public Sacar(Cliente c) {
         initComponents();
+        this.c = c;
+        lbl_saldo.setText(Double.toString(this.c.getSaldo()));
+    }
+
+    private Sacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -27,19 +39,109 @@ public class Sacar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        lbl_saldo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_valor = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txt_senha = new javax.swing.JPasswordField();
+        btn_cancelar = new javax.swing.JButton();
+        btn_sacar = new javax.swing.JButton();
+
+        setTitle("Sacar");
+
+        jLabel1.setFont(new java.awt.Font("Fira Sans", 1, 24)); // NOI18N
+        jLabel1.setText("Saldo:");
+
+        lbl_saldo.setFont(new java.awt.Font("Fira Sans", 1, 24)); // NOI18N
+        lbl_saldo.setText("0");
+
+        jLabel3.setFont(new java.awt.Font("Fira Sans", 1, 24)); // NOI18N
+        jLabel3.setText("Valor do saque");
+
+        txt_valor.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Fira Sans", 1, 24)); // NOI18N
+        jLabel4.setText("Senha");
+
+        txt_senha.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+
+        btn_cancelar.setText("Cancelar");
+
+        btn_sacar.setText("Sacar");
+        btn_sacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sacarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_saldo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_valor)
+                            .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_sacar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lbl_saldo))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_sacar)
+                    .addComponent(btn_cancelar))
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_sacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sacarActionPerformed
+        OperacaoBancaria banco = new OperacaoBancaria();
+        String senha = txt_senha.getText();
+        String nome = this.c.getNome();
+        double valor = Double.parseDouble(txt_valor.getText());
+        if(banco.validaCliente(nome, senha)){
+            if(banco.saque(valor, c, (byte)1)){
+                JOptionPane.showMessageDialog(this, "Saque feito com sucesso!");
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Não foi possivel realizar o saque");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, senha + this.c.getNome());
+        }
+    }//GEN-LAST:event_btn_sacarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +179,13 @@ public class Sacar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_sacar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbl_saldo;
+    private javax.swing.JPasswordField txt_senha;
+    private javax.swing.JTextField txt_valor;
     // End of variables declaration//GEN-END:variables
 }
