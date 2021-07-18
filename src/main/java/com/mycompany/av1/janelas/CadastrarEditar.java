@@ -26,13 +26,15 @@ public class CadastrarEditar extends javax.swing.JFrame {
      * Creates new form CadastrarEditar
      */
     private Cliente c1;
+    private boolean tipo;
     public CadastrarEditar() {
         initComponents();
 
     }
     
-    public CadastrarEditar(Cliente c){
+    public CadastrarEditar(Cliente c, boolean t){
         initComponents();
+        tipo = t;
         c1 = c;
         txt_data.setText(formataData());
         txt_nome.setText(c1.getNome());
@@ -289,50 +291,11 @@ public class CadastrarEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_dataActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        
-        String senha;
-        double salario = 0;
-        String nome;
-        String endereco;
-        String dataNa;
-        String cpf;
-        String senha2;
-        
-        try {
-            salario = converteSalario();
-        } catch (BadLocationException ex) {
-            Logger.getLogger(CadastrarEditar.class.getName()).log(Level.SEVERE, null, ex);
+        if (tipo){
+            editarCliente();
+        }else{
+            salvarCliente();
         }
-
-        senha = txt_senha.getText();
-        senha2 = txt_confirmar_senha.getText();
-        nome = txt_nome.getText();
-        endereco = txt_endereco.getText();
-        dataNa = txt_data.getText();
-        cpf = txt_cpf.getText();
-        
-        
-        if(senha.equals(senha2)){
-            
-           
-            
-            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || dataNa.isBlank() || cpf.isBlank()){
-                JOptionPane.showMessageDialog(this, "Preencha todos os campos");
-            } else {
-                Arquivo a = new Arquivo();
-                Gambiarra gamb = new Gambiarra();
-                Cliente c = gamb.iniciaCliente(nome, cpf, endereco, dataNa, salario, senha, a.arquivoDeControle());
-                a.salvar(c);
-                JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso!");
-                limparTela();
-            }
-        }else
-            JOptionPane.showMessageDialog(this, "senha não confere com a comfirmação da senha");
-        
-        
-        
-       
-   
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     /**
@@ -453,6 +416,92 @@ public class CadastrarEditar extends javax.swing.JFrame {
         if(sal.length() < 7)
             sal = "0" + sal;
         return sal;
+    }
+    
+    private void editarCliente(){
+        Arquivo a = new Arquivo();
+        String senha;
+        double salario = 0;
+        String nome;
+        String endereco;
+        String dataNa;
+        String cpf;
+        String senha2;
+        
+        try {
+            salario = converteSalario();
+        } catch (BadLocationException ex) {
+            Logger.getLogger(CadastrarEditar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        senha = txt_senha.getText();
+        senha2 = txt_confirmar_senha.getText();
+        nome = txt_nome.getText();
+        endereco = txt_endereco.getText();
+        dataNa = txt_data.getText();
+        cpf = txt_cpf.getText();
+        
+        
+        if(senha.equals(senha2)){
+            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || dataNa.isBlank() || cpf.isBlank()){
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+            } else {
+                if(nome.equals(c1.getNome())){
+                    Cliente c = new Cliente(nome, cpf, endereco, dataNa, salario, senha, a.arquivoDeControle());
+                    a.salvar(c);
+                    JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso!");
+                    limparTela();
+                }else{
+                    if(a.renoarArquivo(c1.getNome(), nome)){
+                        Cliente c = new Cliente(nome, cpf, endereco, dataNa, salario, senha, a.arquivoDeControle());
+                        c.setSaldo(c1.getSaldo());
+                        a.salvar(c);
+                        JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso!");
+                        limparTela();
+                    }else
+                        JOptionPane.showMessageDialog(this, "ERRO! ao salvar o cliente");
+                    
+                }
+            }    
+        }else
+            JOptionPane.showMessageDialog(this, "senha não confere com a comfirmação da senha");
+    }
+    
+    private void salvarCliente(){
+        Arquivo a = new Arquivo();
+        String senha;
+        double salario = 0;
+        String nome;
+        String endereco;
+        String dataNa;
+        String cpf;
+        String senha2;
+        
+        try {
+            salario = converteSalario();
+        } catch (BadLocationException ex) {
+            Logger.getLogger(CadastrarEditar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        senha = txt_senha.getText();
+        senha2 = txt_confirmar_senha.getText();
+        nome = txt_nome.getText();
+        endereco = txt_endereco.getText();
+        dataNa = txt_data.getText();
+        cpf = txt_cpf.getText();
+        
+        
+        if(senha.equals(senha2)){
+            if(senha.isBlank() || nome.isBlank() || endereco.isBlank() || dataNa.isBlank() || cpf.isBlank()){
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+            } else {
+                Cliente c = new Cliente(nome, cpf, endereco, dataNa, salario, senha, a.arquivoDeControle());
+                a.salvar(c);
+                JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso!");
+                limparTela();
+            }    
+        }else
+            JOptionPane.showMessageDialog(this, "senha não confere com a comfirmação da senha");
     }
 
 }

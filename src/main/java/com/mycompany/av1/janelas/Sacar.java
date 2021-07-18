@@ -67,6 +67,11 @@ public class Sacar extends javax.swing.JFrame {
         txt_senha.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
 
         btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
 
         btn_sacar.setText("Sacar");
         btn_sacar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,18 +135,26 @@ public class Sacar extends javax.swing.JFrame {
         OperacaoBancaria banco = new OperacaoBancaria();
         String senha = txt_senha.getText();
         String nome = this.c.getNome();
-        double valor = Double.parseDouble(txt_valor.getText());
-        if(banco.validaCliente(nome, senha)){
-            if(banco.saque(valor, c, (byte)1)){
-                JOptionPane.showMessageDialog(this, "Saque feito com sucesso!");
-                this.dispose();
+        if(!(senha.isBlank() || nome.isBlank())){
+            double valor = Double.parseDouble(txt_valor.getText());
+            if(banco.validaCliente(nome, senha)){
+                if(banco.saque(valor, c, (byte)1)){
+                    JOptionPane.showMessageDialog(this, "Saque feito com sucesso!");
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Não foi possivel realizar o saque");
+                }
             }else{
-                JOptionPane.showMessageDialog(this, "Não foi possivel realizar o saque");
+                JOptionPane.showMessageDialog(this, senha + this.c.getNome());
             }
         }else{
-            JOptionPane.showMessageDialog(this, senha + this.c.getNome());
+            JOptionPane.showMessageDialog(this, "Preencha os campos");
         }
     }//GEN-LAST:event_btn_sacarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

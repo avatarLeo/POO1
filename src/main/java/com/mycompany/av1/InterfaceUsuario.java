@@ -29,7 +29,7 @@ public class InterfaceUsuario {
         System.out.println("| Escolha uma opção ou [0] para sair                 |");
         System.out.println("|====================================================|");
         
-        new TelaInicial().setVisible(true);
+        
         
         //new Editar().setVisible(true);
     }
@@ -326,7 +326,11 @@ public class InterfaceUsuario {
             ler.nextLine();
             }
      }
-     }    
+     }  
+     
+     public void interfaceGrafica(){
+         new TelaInicial().setVisible(true);
+     }
     
   
 }

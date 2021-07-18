@@ -38,7 +38,6 @@ public class Estrato extends javax.swing.JDialog {
         tex_area = new javax.swing.JTextPane();
         btn_ok = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Extrato");
 
         tex_area.setEditable(false);

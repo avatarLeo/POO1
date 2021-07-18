@@ -50,8 +50,6 @@ public class Deposito extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lbl_nome = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         btn_voltar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_voltar.setText("Voltar");
         btn_voltar.addActionListener(new java.awt.event.ActionListener() {
